@@ -9,6 +9,7 @@
 </div>
 
 <div class="actions">
+    <%= link_to "Edit Your Review", edit_review_path(@review) %>
     <%= link_to "Delete This Review", review_path(@review), method: :delete, data: { confirm: "Are you sure?" } %>
 </div>
 

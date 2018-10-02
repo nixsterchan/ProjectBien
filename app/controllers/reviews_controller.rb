@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
     def create
         # takes info from the form and add to the database
         # create new row in database and save
-        @review = Review.new(params.require(:review).permit(:title, :body, :score)) 
+        @review = Review.new(form_params) 
 
         # save to database
         @review.save
@@ -48,6 +48,28 @@ class ReviewsController < ApplicationController
 
         # redirect to homepage
         redirect_to root_path
+    end
+    
+    def edit
+        # find individual review to edit
+        @review = Review.find(params[:id])
+        
+    end
+
+    def update
+        # find individual review
+        @review = Review.find(params[:id])
+
+        # update with new info from the form
+        @review.update(form_params)
+
+        # redirect somewhere new
+        redirect_to review_path(@review)
+    end
+
+    def form_params
+        # can use this within rails and any part of this controller
+        params.require(:review).permit(:title, :body, :score)
     end
 
 end
