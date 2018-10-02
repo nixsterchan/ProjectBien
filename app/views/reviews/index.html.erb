@@ -1,3 +1,5 @@
-<h1>HELLLLLLLLLLOOOOOOOOOOOOOOOOO</h1>
-
-<h2> SUCKKKKK </h2>
+<% @reviews.each do |review| %>
+    <div class="review">
+        <%= link_to review.title, review_path(review) %>    
+    </div>
+<% end %>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bien</title>
+    <title>Bien Reviews</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,15 @@
   </head>
 
   <body>
+    <h1><%= link_to "Bien Reviews", root_path %></h1>
+    <h2>Awesome Reviews for everyone</h2>
+    <nav>
+      <%= link_to "Add A New Review!", new_review_path %>
+    </nav>
     <%= yield %>
+
+    <footer>
+      Copyright yeah babe
+    </footer>
   </body>
 </html>
