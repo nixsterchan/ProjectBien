@@ -8,10 +8,23 @@ class ReviewsController < ApplicationController
 
         # <% %> is a ruby functionality that allows us to put in the variable defined here into the html.erb file
         # very first touch on dynamic coding in ruby so its very important to remember 
-        @number = rand(100) 
+        
+        # we find these from the url first
+        @price = params[:price]
+        @cuisine = params[:cuisine]
 
-        # show items in database
+        # start with all the reviews
         @reviews = Review.all
+
+        # filtering by price (if it exists)
+        if @price.present?
+            @reviews = @reviews.where(price: @price)
+        end
+
+        # filtering by cuisine
+        if @cuisine.present?
+            @reviews = @reviews.where(cuisine: @cuisine)
+        end
 
     end
 
@@ -85,7 +98,11 @@ class ReviewsController < ApplicationController
 
     def form_params
         # can use this within rails and any part of this controller
-        params.require(:review).permit(:title, :restaurant, :body, :score, :ambience)
+        params.require(:review).permit(:title, :restaurant, :body, :score, :ambience,
+             :cuisine, :price, :address)
     end
 
 end
+
+
+
