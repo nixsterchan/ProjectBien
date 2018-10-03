@@ -12,6 +12,7 @@ class ReviewsController < ApplicationController
         # we find these from the url first
         @price = params[:price]
         @cuisine = params[:cuisine]
+        @location = params[:location]
 
         # start with all the reviews
         @reviews = Review.all
@@ -24,6 +25,11 @@ class ReviewsController < ApplicationController
         # filtering by cuisine
         if @cuisine.present?
             @reviews = @reviews.where(cuisine: @cuisine)
+        end
+
+        # search near the location given   (here we use 'near', that has been given to us by geocoder)
+        if @location.present?
+            @reviews = @reviews.near(@location)
         end
 
     end
