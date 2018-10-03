@@ -11,23 +11,26 @@
 
   <body>
     <header>
-      <h1>
-        <%= link_to root_path do %>
-          <%= image_tag 'bien-logo.svg' %>
-        <% end %>
-      </h1>
-      
+      <nav>
+        <h1>
+          <%= link_to root_path do %>
+            <%= image_tag 'bien-logo.svg' %>
+          <% end %>
+        </h1>
+      </nav>  
       <h2>Awesome Reviews for everyone</h2>
       
       <nav>
         <%= link_to "Add A New Review!", new_review_path %>
       </nav>
   </header>
-    <%= yield %>
 
+  <main>
+    <%= yield %>
+  </main>
 
     <footer>
-      Copyright yeah babe
+      Copyright 2018
     </footer>
   </body>
 </html>
