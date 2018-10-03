@@ -30,6 +30,12 @@ gem 'jbuilder', '~> 2.5'
 # Add in Geocoder
 gem 'geocoder'
 
+# Add in simple_form
+gem 'simple_form'
+
+# Add in active link to, making our filters active
+gem 'active_link_to'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
