@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  # 
+  resources :users
+
   # conventional means of setting up root
   root "reviews#index"
 
