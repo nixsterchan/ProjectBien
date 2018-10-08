@@ -7,6 +7,17 @@
     <%= @review.score %> /10
 </div>
 
+<div class="user">
+    Posted by 
+
+    <% if @review.user.present? %>
+        <%= link_to @review.user.username, user_path(@review.user) %>
+    <% else %>
+        Anonymous
+    <% end %>
+
+</div>
+
 <% if @review.ambience.present? %>
     <div class="ambience">
         Ambience: <%= @review.ambience %>
@@ -29,10 +40,14 @@
     <%= simple_format @review.body %>
 </div>
 
-<div class="actions">
-    <%= link_to "Edit Your Review", edit_review_path(@review) %>
-    <%= link_to "Delete This Review", review_path(@review), method: :delete, data: { confirm: "Are you sure?" } %>
-</div>
+<% if @review.user == @current_user %>
+
+    <div class="actions">
+        <%= link_to "Edit Your Review", edit_review_path(@review) %>
+        <%= link_to "Delete This Review", review_path(@review), method: :delete, data: { confirm: "Are you sure?" } %>
+    </div>
+
+<% end %>
 
 <h3>Comments</h3>
 

@@ -79,8 +79,10 @@ class ReviewsController < ApplicationController
         # find the individual review
         @review = Review.find(params[:id])
 
-        # destroy review
-        @review.destroy
+        # destroy review if they have access(to user against hackers)
+        if @review.user == @current_user
+            @review.destroy
+        end
 
         # redirect to homepage
         redirect_to root_path
@@ -89,21 +91,35 @@ class ReviewsController < ApplicationController
     def edit
         # find individual review to edit
         @review = Review.find(params[:id])
-        
+
+        if @review.user != @current_user
+            redirect_to root_path
+        end
+
+
     end
 
     def update
         # find individual review
         @review = Review.find(params[:id])
 
-        # update with new info from the form
-        if @review.update(form_params)
+        # check if current user is valid, if not no access
+        if @review.user != @current_user
+            redirect_to root_path
 
-            # redirect somewhere new
-            redirect_to review_path(@review)
         else
-            render "edit"
+
+            # update with new info from the form
+            if @review.update(form_params)
+
+                # redirect somewhere new
+                redirect_to review_path(@review)
+            else
+                render "edit"
+            end
         end
+
+
     end
 
     def form_params
