@@ -7,16 +7,19 @@
     <p>
         <%if @review.bookmarks.where(user: @current_user).any? %>
             <%= link_to "Unbookmark", review_bookmark_path(@review), method: :delete %>
-
         <% else %>
             <%= link_to "Bookmark", review_bookmark_path(@review), method: :post %>
-
         <% end %>
-
-
     </p>
 <% end %>
 
+<h4>Bookmarked by...</h4>
+
+<ul>
+    <% @review.bookmarks.each do |bookmark| %>
+        <li><%= bookmark.user.username %></li>
+    <% end %>
+</ul>
 
 <div class="score">
     <%= @review.score %> /10
