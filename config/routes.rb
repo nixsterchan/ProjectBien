@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   # below are the generated controllers and helps set up all the urls needed for this
   resources :reviews do
     resources :comments
+
+    # can only do one thing 
+    resource :bookmark
+
   end
 
   # 
