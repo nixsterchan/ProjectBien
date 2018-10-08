@@ -7,6 +7,8 @@ class CommentsController < ApplicationController
         # we got some data from the form we added, and we will add it here
         @comment = @review.comments.new(params.require(:comment).permit(:body))
 
+        @comment.user = @current_user
+        
         # save comment to database
         @comment.save
 

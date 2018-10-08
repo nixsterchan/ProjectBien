@@ -48,6 +48,8 @@ class ReviewsController < ApplicationController
         # create new row in database and save
         @review = Review.new(form_params) 
 
+        # and then associate it with the current user
+        @review.user = @current_user
         # # save to database
         # @review.save
 
