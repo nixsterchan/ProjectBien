@@ -3,6 +3,9 @@ class Review < ApplicationRecord
     # add an association that has a 1-to-many relationship
     has_many :comments
 
+    # add an association to user
+    belongs_to :user
+
 
     # for the geocode (everytime we save a review , the address will be geocoded and put in a certain place)
 

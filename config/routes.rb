@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   # 
   resources :users
 
+  #
+  resource :session
+
   # conventional means of setting up root
   root "reviews#index"
 
