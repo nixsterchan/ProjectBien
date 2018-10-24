@@ -94,6 +94,8 @@ class ReviewsController < ApplicationController
 
         if @review.user != @current_user
             redirect_to root_path
+        elsif @review.created_at < 1.hour.ago
+          redirect_to review_path(@review)
         end
 
 
@@ -125,7 +127,7 @@ class ReviewsController < ApplicationController
     def form_params
         # can use this within rails and any part of this controller
         params.require(:review).permit(:title, :restaurant, :body, :score, :ambience,
-             :cuisine, :price, :address)
+             :cuisine, :price, :address, :photo)
     end
 
 end

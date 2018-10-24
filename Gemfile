@@ -21,6 +21,21 @@ end
 # takes away profanity
 gem 'profanity_filter'
 
+# lets add uploading files
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick' 
+gem 'fog-aws'
+
+# add admin panel
+gem 'activeadmin'
+gem 'devise'
+gem 'cancan'
+gem 'draper'
+gem 'pundit'
+
+# Figaro
+gem 'figaro'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets

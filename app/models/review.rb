@@ -7,6 +7,8 @@ class Review < ApplicationRecord
     # add an association to user
     belongs_to :user
 
+    # add the photo uploader
+    mount_uploader :photo, PhotoUploader
 
     # for the geocode (everytime we save a review , the address will be geocoded and put in a certain place)
 
